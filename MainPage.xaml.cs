@@ -16,9 +16,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
 
-//REKENMACHINE OPDRACHT VERDER GAAN
-
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace Rekenmachine
@@ -174,21 +171,6 @@ namespace Rekenmachine
         //de operation is '-' hier word het gekozen welke operator je wilt gebruiken.
         //string.Empty heb ik eerder al uitgelegd en dat zorgt er voor dat input leeg word gemaakt
         // en dit word dan gewoon een paar keer herhaald bij ander buttons
-        private void min_click(object sender, RoutedEventArgs e)
-        {
-            textbox1.Text = "-";
-            operand1 = input;
-            operation = '-';
-            input = string.Empty;
-        }
-        //plus klik
-        private void plus_click(object sender, RoutedEventArgs e)
-        {
-            textbox1.Text = "+";
-            operand1 = input;
-            operation = '+';
-            input = string.Empty;
-        }
 
         private void vier_click(object sender, RoutedEventArgs e)
         {
@@ -211,22 +193,6 @@ namespace Rekenmachine
             textbox1.Text += input;
         }
 
-        private void delen_click(object sender, RoutedEventArgs e)
-        {
-            textbox1.Text = "÷";
-            operand1 = input;
-            operation = '/';
-            input = string.Empty;
-        }
-
-        private void keer_click(object sender, RoutedEventArgs e)
-        {
-            textbox1.Text = "x";
-            operand1 = input;
-            operation = '*';
-            input = string.Empty;
-        }
-
         private void zeven_click(object sender, RoutedEventArgs e)
         {
             textbox1.Text = "";
@@ -247,6 +213,38 @@ namespace Rekenmachine
             textbox1.Text = "";
             input += "9";
             textbox1.Text += input;
+        }
+
+        private void keer_click(object sender, RoutedEventArgs e)
+        {
+            textbox1.Text = "x";
+            operand1 = input;
+            operation = '*';
+            input = string.Empty;
+        }
+
+        private void delen_click(object sender, RoutedEventArgs e)
+        {
+            textbox1.Text = "÷";
+            operand1 = input;
+            operation = '/';
+            input = string.Empty;
+        }
+
+        private void min_click(object sender, RoutedEventArgs e)
+        {
+            textbox1.Text = "-";
+            operand1 = input;
+            operation = '-';
+            input = string.Empty;
+        }
+
+        private void plus_click(object sender, RoutedEventArgs e)
+        {
+            textbox1.Text = "+";
+            operand1 = input;
+            operation = '+';
+            input = string.Empty;
         }
 
         //de clear knop zorgt er voor dat alles leeg komt te staan
@@ -291,38 +289,19 @@ namespace Rekenmachine
             operation = '$';
             input = string.Empty;
         }
-
-        private void history_click(object sender, RoutedEventArgs e)
-        {
-            if (textbox2.Visibility == Visibility.Visible)
-            {
-                textbox2.Visibility = Visibility.Collapsed;
-            }
-            else if (textbox2.Visibility == Visibility.Collapsed)
-            {
-                textbox2.Visibility = Visibility.Visible;
-            }
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Server=localhost;Database=master;Trusted_Connection=True;";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
-            MessageDialog dialog = new MessageDialog("text");
-            cnn.Close();
-        }
-
+        //binary to hexidecimal
         private void bin_click(object sender, RoutedEventArgs e)
         {
             /* Here are all the variables that we are going to need to use */
             int i, n;
             int[] a = new int[10];
             string finalResult = "";
-            
+
 
             if (textbox1.Text.Contains("."))
             {
                 textbox1.Text = ("Syntax Error");
-                
+
             }
             else
             {
@@ -353,9 +332,27 @@ namespace Rekenmachine
             }
         }
 
+        //textbox management that shows sql database history of previously inputted values to the calculator
+        private void history_click(object sender, RoutedEventArgs e)
+        {
+            if (textbox2.Visibility == Visibility.Visible)
+            {
+                textbox2.Visibility = Visibility.Collapsed;
+            }
+            else if (textbox2.Visibility == Visibility.Collapsed)
+            {
+                textbox2.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void textbox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         private void textbox2_TextChanged(object sender, TextChangedEventArgs e)
         {
-            double newVar = result;
+            double newVar = getal1 + getal2 + result;
             textbox2.Text = newVar.ToString();
         }
     }
