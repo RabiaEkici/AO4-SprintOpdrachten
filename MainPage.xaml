@@ -116,8 +116,11 @@
         <Button x:Name="modulo" Click="modulo_click" Grid.Column="2" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TextBlock HorizontalAlignment="Center" Text="%" FontSize="50em"/>
         </Button>
-        <Button x:Name="dollar" Click="dollar_click" Grid.Column="3" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
+        <Button x:Name="dollar" Click="dollar_click" Grid.Column="3" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="1">
             <TextBlock HorizontalAlignment="Center" Text="$" FontSize="50em"/>
+        </Button>
+        <Button x:Name="hex" Click="hex_click" Grid.Column="4" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="1">
+            <TextBlock HorizontalAlignment="Center" Text="HEX" FontSize="50em"/>
         </Button>
         <Button x:Name="history" Click="history_click" Grid.Column="5" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Background="White" BorderBrush="White">
             <TextBlock HorizontalAlignment="Center" Text="history" FontSize="20em"/>
